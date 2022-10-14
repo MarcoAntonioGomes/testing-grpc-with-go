@@ -10,15 +10,13 @@ import (
 	"google.golang.org/grpc/reflection"
 )
 
-func main(){
-
+func main() {
 
 	lis, err := net.Listen("tcp", "localhost:50051")
 
 	if err != nil {
 		log.Fatalf("Could not connect: %v", err)
 	}
-
 
 	grpcServer := grpc.NewServer()
 	pb.RegisterUserServiceServer(grpcServer, services.NewUserService())
@@ -28,4 +26,3 @@ func main(){
 		log.Fatal("Could not serve: %v", err)
 	}
 }
-
